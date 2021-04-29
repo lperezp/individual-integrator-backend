@@ -1,0 +1,34 @@
+export interface ChemicalElement {
+  id?: number;
+  atomicMass: string;
+  atomicNumber: number;
+  atomicRadius: number;
+  block: string;
+  boilingPoint: number;
+  bondingType: string;
+  cpkHexColor: string;
+  crystalStructure: string;
+  density: string;
+  electronAffinity: number;
+  electronegativity: number;
+  electronicConfiguration: string;
+  facts: string;
+  group: number;
+  groupBlock: string;
+  ionRadius: string;
+  ionizationEnergy: number;
+  isotopes: string;
+  magneticOrdering: string;
+  meltingPoint: number;
+  molarHeatCapacity: number;
+  name: string;
+  oxidationStates: string;
+  period: number;
+  speedOfSound: number;
+  standardState: string;
+  symbol: string;
+  vanDelWaalsRadius: number;
+  yearDiscovered: number;
+  minerals: string;
+  history: string;
+}
