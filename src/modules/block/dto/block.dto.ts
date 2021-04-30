@@ -1,1 +1,4 @@
-export class BlockDTO {}
+export class BlockDTO {
+  value: string;
+  description: string;
+}
