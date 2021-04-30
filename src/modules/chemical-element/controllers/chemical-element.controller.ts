@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ChemicalElementDTO } from '../dto/chemical-element.dto';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
+import { ChemicalElementDTO } from '../dto/chemical-element.dto';
 import { ChemicalElementService } from '../services/chemical-element.service';
 import { ChemicalElement } from './../../../models/chemical-element.model';
 
@@ -11,6 +11,11 @@ export class ChemicalElementController {
   @Get()
   getAllChemicalElement(): ChemicalElement[] {
     return this.chemicalElementService.getAllChemicalElement();
+  }
+
+  @Get('/:name')
+  getChemicalElementByName(@Param('name') name: string): ChemicalElement {
+    return this.chemicalElementService.getChemicalElementByName(name);
   }
 
   @Post()
