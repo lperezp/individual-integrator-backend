@@ -1,25 +1,24 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 
 import { ChemicalElementDTO } from '../dto/chemical-element.dto';
+import { ChemicalElement } from '../entity/chemical-element.entity';
 import { ChemicalElementService } from '../services/chemical-element.service';
-import { ChemicalElement } from './../../../models/chemical-element.model';
 
 @Controller('chemical-element')
 export class ChemicalElementController {
   constructor(private chemicalElementService: ChemicalElementService) {}
 
-  @Get()
-  getAllChemicalElement(): ChemicalElement[] {
-    return this.chemicalElementService.getAllChemicalElement();
-  }
-
-  @Get('/:name')
-  getChemicalElementByName(@Param('name') name: string): ChemicalElement {
-    return this.chemicalElementService.getChemicalElementByName(name);
-  }
-
   @Post()
-  createChemicalElement(@Body() body: ChemicalElementDTO): void {
-    console.log('bbb', body);
+  @UsePipes(ValidationPipe)
+  createChemicalElement(
+    @Body() payload: ChemicalElementDTO,
+  ): Promise<ChemicalElement> {
+    return this.chemicalElementService.createChemicalElement(payload);
   }
 }

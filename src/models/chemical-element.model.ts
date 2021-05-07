@@ -1,6 +1,5 @@
-export interface ChemicalElement {
-  id?: number;
-  atomicMass: string;
+export interface ChemicalElementInterface {
+  atomicMass: number;
   atomicNumber: number;
   atomicRadius: number;
   block: string;
@@ -8,7 +7,7 @@ export interface ChemicalElement {
   bondingType: string;
   cpkHexColor: string;
   crystalStructure: string;
-  density: string;
+  density: number;
   electronAffinity: number;
   electronegativity: number;
   electronicConfiguration: string;
