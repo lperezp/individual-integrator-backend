@@ -9,6 +9,7 @@ import { BlockModule } from './modules/block/block.module';
 import { BondingTypeModule } from './modules/bonding-type/bonding-type.module';
 import { ChemicalElementModule } from './modules/chemical-element/chemical-element.module';
 import { CrystalStructureModule } from './modules/crystal-structure/crystal-structure.module';
+import { SerieChemicalModule } from './modules/serie-chemical/serie-chemical.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CrystalStructureModule } from './modules/crystal-structure/crystal-stru
     BlockModule,
     BondingTypeModule,
     CrystalStructureModule,
+    SerieChemicalModule,
   ],
   controllers: [AppController],
   providers: [AppService],
