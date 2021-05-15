@@ -8,6 +8,7 @@ import { typeORMConfig } from './config/type-orm.config';
 import { BlockModule } from './modules/block/block.module';
 import { BondingTypeModule } from './modules/bonding-type/bonding-type.module';
 import { ChemicalElementModule } from './modules/chemical-element/chemical-element.module';
+import { CrystalStructureModule } from './modules/crystal-structure/crystal-structure.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ChemicalElementModule } from './modules/chemical-element/chemical-eleme
     ChemicalElementModule,
     BlockModule,
     BondingTypeModule,
+    CrystalStructureModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -10,7 +10,7 @@ import { CrystalStructureDTO } from '../dto/crystal-structure.dto';
 import { CrystalStructure } from '../entity/crystal-structure.entity';
 import { CrystalStructureService } from '../services/crystal-structure.service';
 
-@Controller('bonding-type')
+@Controller('crystal-structure')
 export class CrystalStructureController {
   constructor(private crystalStructureService: CrystalStructureService) {}
 
