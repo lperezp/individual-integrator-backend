@@ -1,19 +1,20 @@
 export class ChemicalElementDTO {
-  atomicMass: string;
+  atomicMass: number;
   atomicNumber: number;
   atomicRadius: number;
-  block: string;
+  idBlock: number;
+  idBondingType: number;
+  idCrystalStructure: number;
+  idSerieChemical: number;
+  idStandardState: number;
   boilingPoint: number;
-  bondingType: string;
   cpkHexColor: string;
-  crystalStructure: string;
-  density: string;
+  density: number;
   electronAffinity: number;
   electronegativity: number;
   electronicConfiguration: string;
   facts: string;
   group: number;
-  groupBlock: string;
   ionRadius: string;
   ionizationEnergy: number;
   isotopes: string;
@@ -24,7 +25,6 @@ export class ChemicalElementDTO {
   oxidationStates: string;
   period: number;
   speedOfSound: number;
-  standardState: string;
   symbol: string;
   vanDelWaalsRadius: number;
   yearDiscovered: number;

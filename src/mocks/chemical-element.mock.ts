@@ -1,6 +1,4 @@
-import { ChemicalElementInterface } from 'src/models/chemical-element.model';
-
-export const CHEMICAL_ELEMENT_MOCK: ChemicalElementInterface[] = [
+export const CHEMICAL_ELEMENT_MOCK = [
   {
     atomicMass: 1.0079,
     atomicNumber: 0,

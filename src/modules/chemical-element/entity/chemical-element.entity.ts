@@ -1,34 +1,62 @@
-import { BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { CrystalStructure } from 'src/modules/crystal-structure/entity/crystal-structure.entity';
+import { StandardState } from 'src/modules/standard-state/entity/standard-state.entity';
 
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { Block } from './../../block/entity/block.entity';
+import { BondingType } from './../../bonding-type/entity/bonding-type.entity';
+import { SerieChemical } from './../../serie-chemical/entity/serie-chemical.entity';
+
+@Entity()
 export class ChemicalElement extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  atomicMass: string;
+  atomicMass: number;
+
   @Column()
   atomicNumber: number;
 
   @Column()
   atomicRadius: number;
 
-  @Column()
-  block: string;
+  @ManyToOne(
+    type => Block,
+    block => block.chemicalElement,
+  )
+  @JoinColumn({ name: 'idBlock' })
+  block: Block;
 
   @Column()
   boilingPoint: number;
 
-  @Column()
-  bondingType: string;
+  @ManyToOne(
+    type => BondingType,
+    bondingType => bondingType.chemicalElement,
+  )
+  @JoinColumn({ name: 'idBondingType' })
+  bondingType: BondingType;
 
   @Column()
   cpkHexColor: string;
 
-  @Column()
-  crystalStructure: string;
+  @ManyToOne(
+    type => CrystalStructure,
+    crystalStructure => crystalStructure.chemicalElement,
+  )
+  @JoinColumn({ name: 'idCrystalStructure' })
+  crystalStructure: CrystalStructure;
 
   @Column()
-  density: string;
+  density: number;
 
   @Column()
   electronAffinity: number;
@@ -45,8 +73,12 @@ export class ChemicalElement extends BaseEntity {
   @Column()
   group: number;
 
-  @Column()
-  groupBlock: string;
+  @ManyToOne(
+    type => SerieChemical,
+    serieChemical => serieChemical.chemicalElement,
+  )
+  @JoinColumn({ name: 'idSerieChemical' })
+  serieChemical: SerieChemical;
 
   @Column()
   ionRadius: string;
@@ -78,8 +110,12 @@ export class ChemicalElement extends BaseEntity {
   @Column()
   speedOfSound: number;
 
-  @Column()
-  standardState: string;
+  @ManyToOne(
+    type => StandardState,
+    standardState => standardState.chemicalElement,
+  )
+  @JoinColumn({ name: 'idStandardState' })
+  standardState: StandardState;
 
   @Column()
   symbol: string;
@@ -96,102 +132,3 @@ export class ChemicalElement extends BaseEntity {
   @Column()
   history: string;
 }
-
-// import { BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
-// export class ChemicalElement extends BaseEntity {
-//   @PrimaryGeneratedColumn()
-//   id: number;
-
-//   @Column()
-//   atomicMass: string;
-//   @Column()
-//   atomicNumber: number;
-
-//   @Column()
-//   atomicRadius: number;
-
-//   @Column()
-//   idBlock: number;
-
-//   @Column()
-//   boilingPoint: number;
-
-//   @Column()
-//   idBondingType: number;
-
-//   @Column()
-//   cpkHexColor: string;
-
-//   @Column()
-//   idCrystalStructure: number;
-
-//   @Column()
-//   density: string;
-
-//   @Column()
-//   electronAffinity: number;
-
-//   @Column()
-//   electronegativity: number;
-
-//   @Column()
-//   electronicConfiguration: string;
-
-//   @Column()
-//   facts: string;
-
-//   @Column()
-//   group: number;
-
-//   @Column()
-//   idGroupBlock: number;
-
-//   @Column()
-//   ionRadius: string;
-
-//   @Column()
-//   ionizationEnergy: number;
-
-//   @Column()
-//   isotopes: string;
-
-//   @Column()
-//   magneticOrdering: string;
-
-//   @Column()
-//   meltingPoint: number;
-
-//   @Column()
-//   molarHeatCapacity: number;
-
-//   @Column()
-//   name: string;
-
-//   @Column()
-//   oxidationStates: string;
-
-//   @Column()
-//   period: number;
-
-//   @Column()
-//   speedOfSound: number;
-
-//   @Column()
-//   idStandardState: number;
-
-//   @Column()
-//   symbol: string;
-
-//   @Column()
-//   vanDelWaalsRadius: number;
-
-//   @Column()
-//   yearDiscovered: number;
-
-//   @Column()
-//   minerals: string;
-
-//   @Column()
-//   history: string;
-// }

@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { ChemicalElement } from './../../chemical-element/entity/chemical-element.entity';
 
 @Entity()
 export class Block extends BaseEntity {
@@ -10,4 +18,10 @@ export class Block extends BaseEntity {
 
   @Column()
   description: string;
+
+  @OneToMany(
+    type => ChemicalElement,
+    chemicalElement => chemicalElement.block,
+  )
+  chemicalElement: ChemicalElement[];
 }

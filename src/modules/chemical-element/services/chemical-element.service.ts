@@ -1,12 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 
-import * as uuid from 'uuid';
+import { Block } from 'src/modules/block/entity/block.entity';
+import { SerieChemical } from 'src/modules/serie-chemical/entity/serie-chemical.entity';
+import { StandardState } from 'src/modules/standard-state/entity/standard-state.entity';
 
 import { ChemicalElementDTO } from '../dto/chemical-element.dto';
 import { ChemicalElement } from '../entity/chemical-element.entity';
+import { ChemicalElementRepository } from '../repository/chemical-element.repository';
+import { BondingType } from './../../bonding-type/entity/bonding-type.entity';
+import { CrystalStructure } from './../../crystal-structure/entity/crystal-structure.entity';
 
 @Injectable()
 export class ChemicalElementService {
+  constructor(
+    @InjectRepository(ChemicalElementRepository)
+    private chemicalElementRepository: ChemicalElementRepository,
+  ) {}
   async createChemicalElement(
     payload: ChemicalElementDTO,
   ): Promise<ChemicalElement> {
@@ -14,18 +24,18 @@ export class ChemicalElementService {
       atomicMass,
       atomicNumber,
       atomicRadius,
-      block,
+      idBlock,
       boilingPoint,
-      bondingType,
+      idBondingType,
       cpkHexColor,
-      crystalStructure,
+      idCrystalStructure,
       density,
       electronAffinity,
       electronegativity,
       electronicConfiguration,
       facts,
       group,
-      groupBlock,
+      idSerieChemical,
       ionRadius,
       ionizationEnergy,
       isotopes,
@@ -36,7 +46,7 @@ export class ChemicalElementService {
       oxidationStates,
       period,
       speedOfSound,
-      standardState,
+      idStandardState,
       symbol,
       vanDelWaalsRadius,
       yearDiscovered,
@@ -44,6 +54,16 @@ export class ChemicalElementService {
       history,
     } = payload;
     const chemicalElement = new ChemicalElement();
+    const block = new Block();
+    const bondingType = new BondingType();
+    const crystalStructure = new CrystalStructure();
+    const serieChemical = new SerieChemical();
+    const standardState = new StandardState();
+    block.id = idBlock;
+    bondingType.id = idBondingType;
+    crystalStructure.id = idCrystalStructure;
+    serieChemical.id = idSerieChemical;
+    standardState.id = idStandardState;
 
     chemicalElement.atomicMass = atomicMass;
     chemicalElement.atomicNumber = atomicNumber;
@@ -59,7 +79,7 @@ export class ChemicalElementService {
     chemicalElement.electronicConfiguration = electronicConfiguration;
     chemicalElement.facts = facts;
     chemicalElement.group = group;
-    chemicalElement.groupBlock = groupBlock;
+    chemicalElement.serieChemical = serieChemical;
     chemicalElement.ionRadius = ionRadius;
     chemicalElement.ionizationEnergy = ionizationEnergy;
     chemicalElement.isotopes = isotopes;
@@ -79,5 +99,9 @@ export class ChemicalElementService {
 
     await chemicalElement.save();
     return chemicalElement;
+  }
+
+  getAll() {
+    return this.chemicalElementRepository.getAll();
   }
 }

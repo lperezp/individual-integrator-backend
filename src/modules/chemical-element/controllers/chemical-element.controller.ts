@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   Post,
   UsePipes,
   ValidationPipe,
@@ -20,5 +21,10 @@ export class ChemicalElementController {
     @Body() payload: ChemicalElementDTO,
   ): Promise<ChemicalElement> {
     return this.chemicalElementService.createChemicalElement(payload);
+  }
+
+  @Get()
+  getAll(): Promise<ChemicalElement[]> {
+    return this.chemicalElementService.getAll();
   }
 }
