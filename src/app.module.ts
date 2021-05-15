@@ -10,6 +10,7 @@ import { BondingTypeModule } from './modules/bonding-type/bonding-type.module';
 import { ChemicalElementModule } from './modules/chemical-element/chemical-element.module';
 import { CrystalStructureModule } from './modules/crystal-structure/crystal-structure.module';
 import { SerieChemicalModule } from './modules/serie-chemical/serie-chemical.module';
+import { StandardStateModule } from './modules/standard-state/standard-state.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { SerieChemicalModule } from './modules/serie-chemical/serie-chemical.mod
     BondingTypeModule,
     CrystalStructureModule,
     SerieChemicalModule,
+    StandardStateModule,
   ],
   controllers: [AppController],
   providers: [AppService],
