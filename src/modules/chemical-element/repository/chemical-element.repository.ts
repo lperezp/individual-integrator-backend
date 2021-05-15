@@ -14,6 +14,7 @@ export class ChemicalElementRepository extends Repository<ChemicalElement> {
       )
       .innerJoinAndSelect('chemical_element.serieChemical', 'serieChemical')
       .innerJoinAndSelect('chemical_element.standardState', 'standardState')
+      .orderBy('chemical_element.order', 'ASC')
       .getMany();
   }
 }

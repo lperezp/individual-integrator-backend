@@ -131,4 +131,7 @@ export class ChemicalElement extends BaseEntity {
 
   @Column()
   history: string;
+
+  @Column()
+  order: number;
 }

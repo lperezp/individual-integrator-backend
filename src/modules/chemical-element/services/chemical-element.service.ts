@@ -52,6 +52,7 @@ export class ChemicalElementService {
       yearDiscovered,
       minerals,
       history,
+      order,
     } = payload;
     const chemicalElement = new ChemicalElement();
     const block = new Block();
@@ -96,6 +97,7 @@ export class ChemicalElementService {
     chemicalElement.yearDiscovered = yearDiscovered;
     chemicalElement.minerals = minerals;
     chemicalElement.history = history;
+    chemicalElement.order = order;
 
     await chemicalElement.save();
     return chemicalElement;

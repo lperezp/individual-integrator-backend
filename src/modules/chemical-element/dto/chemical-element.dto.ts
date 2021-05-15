@@ -30,4 +30,5 @@ export class ChemicalElementDTO {
   yearDiscovered: number;
   minerals: string;
   history: string;
+  order: number;
 }
